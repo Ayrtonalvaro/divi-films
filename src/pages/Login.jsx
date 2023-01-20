@@ -1,37 +1,32 @@
 import React, { useState } from 'react';
 
-
-
 const Login = () => {
-
-  const [login, setLogin] = useState(false)
-  
+  const [login, setLogin] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const email = event.target.email.value
-    const password = event.target.password.value
+    const email = event.target.email.value;
+    const password = event.target.password.value;
 
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    if(email === '' || password === ''){
-      alert('Please fill in all fields')
-      return
+    if (email === '' || password === '') {
+      alert('Please fill in all fields');
+      return;
     }
-    if(email != '' && !regexEmail.test(email)){
-      alter('Please enter a valid email')
-      return 
+    if (email != '' && !regexEmail.test(email)) {
+      alter('Please enter a valid email');
+      return;
     }
 
-    if(email !== 'eldivi@gmail.com' && password !== '123'){
-      alert('Invalid credentials')
-      return
+    if (email !== 'eldivi@gmail.com' && password !== '123') {
+      alert('Invalid credentials');
+      return;
     }
-    setLogin(true)
-    console.log(login)
-  }
+    setLogin(true);
+    console.log(login);
+  };
 
- 
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto rounded-md shadow-md lg:max-w-xl">

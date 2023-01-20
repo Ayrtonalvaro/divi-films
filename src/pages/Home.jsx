@@ -1,56 +1,25 @@
 import React from 'react';
-import MoviesGrid from '../components/MoviesGrid';
-import { useEffect, useState } from 'react';
-import { get } from '../utils/httpClient';
-import Selector from '../components/Selector';
+import { useState } from 'react';
+import Carrousel from '../components/Carrousel';
 
-
+import { API_KEY } from '../utils/Apikey';
+import useMovies from '../hooks/useMovies';
+import useMovieByCategory from '../hooks/useMovieByCategory';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const URL_POPULAR = `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  const URL_SERIES = `/tv/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+  const movies = useMovies(URL_POPULAR);
+  const series = useMovies(URL_SERIES);
+  const adventure = useMovieByCategory(12);
+  const action = useMovieByCategory(28);
+  const horror = useMovieByCategory(27);
+
   const [loading, setLoading] = useState(true);
-  const [moviesFilter, setMovieFilter] = useState([]);
 
-  useEffect(() => {
-    get('/discover/movie').then((data) => {
-      setMovies(data.results);
-      setLoading(false);
-    });
-  }, []);
-
-  
-
-  const sortByTitle = () => {
-    setMovieFilter(
-      movies.sort((a, b) => {
-        if (a.original_title < b.original_title) {
-          return -1;
-        } else if (a.original_title > b.original_title) {
-          return 1;
-        } else {
-          return 0;
-        }
-      })
-    );
-    console.log(movies)
-  };
-
-  const sortByPopularity = () => {
-    setMovieFilter(
-      movies.sort((a, b) => {
-        if (a.popularity < b.popularity) {
-          return -1;
-        } else if (a.popularity > b.popularity) {
-          return 1;
-        } else {
-          return 0;
-        }
-      })
-    );
-    console.log("popular")
-  };
-
-  if (loading)
+  if (!movies)
     return (
       <div>
         <p className="text-6xl flex  justify-center mt-[100px]">
@@ -59,28 +28,36 @@ const Home = () => {
       </div>
     );
   return (
-    <div className="mt-5  ">
-      <h1 className="text-red-800 text-7xl uppercase ">films</h1>
-      <div className="flex justify-center gap-10 text-slate-400 mt-5 ">
-        <p className="uppercase"> Sort by </p>
-        <div className="flex gap-5">
-          <button
-            className="rounded-sm w-20 bg-gray-700 hover:text-slate-300 hover:bg-gray-500"
-            onClick={sortByTitle}
-          >
-            Title
-          </button>
-          <button
-            className="rounded-sm w-20 bg-gray-700 hover:text-slate-300 hover:bg-gray-500"
-            onClick={sortByPopularity}
-          >
-            Popularity
-          </button>
-          <button className="rounded-sm w-20 bg-gray-700 hover:text-slate-300 hover:bg-gray-500">Stars</button>
-        </div>
-      </div>
+    <div className="mt-5">
+      <h4 className="text-orange-600 text-3xl font-black ">Tendencias</h4>
+      <NavLink to="/movies">
+        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+      </NavLink>
+      <Carrousel movies={movies} />
+      <h4 className="text-orange-600 text-2xl mt-5 font-bold ">Series</h4>
+      <NavLink to="/series">
+        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+      </NavLink>
 
-      <MoviesGrid movies={movies} />
+      <Carrousel movies={series} />
+      <h4 className="text-orange-600 text-2xl mt-5 ">Adventure</h4>
+      <NavLink>
+        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+      </NavLink>
+
+      <Carrousel movies={adventure} />
+      <h4 className="text-orange-600 text-2xl mt-5 ">Action</h4>
+      <NavLink>
+        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+      </NavLink>
+
+      <Carrousel movies={action} />
+      <h4 className="text-orange-600 text-2xl mt-5 ">horror</h4>
+      <NavLink>
+        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+      </NavLink>
+
+      <Carrousel movies={horror} />
     </div>
   );
 };
