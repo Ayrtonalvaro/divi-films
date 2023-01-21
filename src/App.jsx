@@ -13,7 +13,7 @@ import MovieDetail from './pages/MovieDetails';
 
 function App() {
   return (
-    <div className="App container mx-auto">
+    <div className="App container mx-auto ">
       <BrowserRouter>
         <Navbar />
         <Routes>

@@ -5,7 +5,7 @@ const Populars = () => {
     <div>
       <h1>populars</h1>
     </div>
-  )
+  );
 }
 
 export default Populars

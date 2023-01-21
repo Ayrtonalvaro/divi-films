@@ -1,16 +1,29 @@
-import React from 'react'
-import CardCarrousel from './CardCarrousel'
+import React from 'react';
+import CardCarrousel from './CardCarrousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper';
 
-const Carrousel = ({movies}) => {
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+
+const Carrousel = ({ movies }) => {
   return (
     <div>
-      <div className=" overflow-x-scroll flex gap-5  ">
+      <Swiper
+        className="h-44 "
+        modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
+        spaceBetween={10}
+        slidesPerView={6}
+        navigation   
+      >
         {movies.map((movie) => (
-          <CardCarrousel key={movie.id} movie={movie} />
+          <SwiperSlide key={movie.id}>
+            <CardCarrousel key={movie.id} movie={movie} />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
-}
+};
 
-export default Carrousel
+export default Carrousel;

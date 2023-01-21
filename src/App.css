@@ -1,3 +1,28 @@
 *{
   font-family: 'Roboto', sans-serif;
+  
+}
+.swiper-button-next{
+  color: #f8fafc;
+  opacity: 0.5;
+  --swiper-navigation-size: 40px;
+  height: 50px;
+  
+}
+
+
+.swiper-button-prev {
+  color: #f8fafc;
+  opacity: 0.5;
+  --swiper-navigation-size: 40px;
+}
+
+.swiper-button-next:hover{
+  color: #f8fafc;
+  opacity: 1;
+}
+
+.swiper-button-prev:hover{
+  color: #f8fafc;
+  opacity: 1;
 }

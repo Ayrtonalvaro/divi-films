@@ -28,18 +28,13 @@ const Home = () => {
       </div>
     );
   return (
-    <div className="mt-5">
+    <div className="mt-5 scroll-smooth">
       <h4 className="text-orange-600 text-3xl font-black ">Tendencias</h4>
       <NavLink to="/movies">
         <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
       </NavLink>
       <Carrousel movies={movies} />
-      <h4 className="text-orange-600 text-2xl mt-5 font-bold ">Series</h4>
-      <NavLink to="/series">
-        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
-      </NavLink>
 
-      <Carrousel movies={series} />
       <h4 className="text-orange-600 text-2xl mt-5 ">Adventure</h4>
       <NavLink>
         <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
