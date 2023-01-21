@@ -6,8 +6,8 @@ const CardGrid = ({ movie }) => {
     <div>
       <NavLink to={`/movie/${movie.id}`}>
         <img
-          className="w-96 rounded-md p-1 hover:opacity-75"
-          src={`${LINK_IMG}${movie.backdrop_path}`}
+          className="w-80 rounded-md p-1 hover:opacity-75"
+          src={`${LINK_IMG}${movie.poster_path}`}
         />
       </NavLink>
       <p className="text-white font-bold text-xl">{movie.original_title}</p>

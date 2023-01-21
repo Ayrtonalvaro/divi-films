@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/favs" element={<Favs />} />
           <Route
             exact
-            path="/category/:nameCategory"
+            path="/category/:idCategory"
             element={<MoviesCategory />}
           />
           <Route exact path='/movie/:id' element={<MovieDetail />} />

@@ -1,5 +1,6 @@
 *{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+
   
 }
 .swiper-button-next{
@@ -25,4 +26,8 @@
 .swiper-button-prev:hover{
   color: #f8fafc;
   opacity: 1;
+}
+
+#title-movie-details{
+  font-family: 'Amatic SC', cursive;
 }

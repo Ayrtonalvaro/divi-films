@@ -10,7 +10,7 @@ const Carrousel = ({ movies }) => {
   return (
     <div>
       <Swiper
-        className="h-44 "
+        className="h-full "
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         spaceBetween={10}
         slidesPerView={6}

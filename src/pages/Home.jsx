@@ -28,7 +28,7 @@ const Home = () => {
       </div>
     );
   return (
-    <div className="mt-5 scroll-smooth">
+    <div className="mt-5 scroll-smooth p-2">
       <h4 className="text-orange-600 text-3xl font-black ">Tendencias</h4>
       <NavLink to="/movies">
         <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
@@ -36,22 +36,21 @@ const Home = () => {
       <Carrousel movies={movies} />
 
       <h4 className="text-orange-600 text-2xl mt-5 ">Adventure</h4>
-      <NavLink>
+      <NavLink to={`/category/12`}>
         <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
       </NavLink>
 
       <Carrousel movies={adventure} />
       <h4 className="text-orange-600 text-2xl mt-5 ">Action</h4>
-      <NavLink>
+      <NavLink to='/category/28'>
         <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
       </NavLink>
 
       <Carrousel movies={action} />
       <h4 className="text-orange-600 text-2xl mt-5 ">horror</h4>
-      <NavLink>
+      <NavLink to='category/27'>
         <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
       </NavLink>
-
       <Carrousel movies={horror} />
     </div>
   );

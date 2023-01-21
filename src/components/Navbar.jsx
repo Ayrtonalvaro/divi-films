@@ -14,19 +14,29 @@ const Navbar = () => {
       </div>
       <div className="flex gap-5 ">
         <NavLink to="/">
-          <span className="hover:text-orange-600 cursor-pointer duration-100">Home</span>
+          <span className="hover:text-orange-600 cursor-pointer duration-100">
+            Home
+          </span>
         </NavLink>
         <NavLink to="/movies">
-          <span className="hover:text-orange-600 cursor-pointer duration-100">Movies</span>
+          <span className="hover:text-orange-600 cursor-pointer duration-100">
+            Movies
+          </span>
         </NavLink>
         <NavLink to="/series">
-          <span className="hover:text-orange-600 cursor-pointer duration-100">Series</span>
+          <span className="hover:text-orange-600 cursor-pointer duration-100">
+            Horror
+          </span>
         </NavLink>
         <NavLink to="/populars">
-          <span className="hover:text-orange-600 cursor-pointer duration-100">Populars</span>
+          <span className="hover:text-orange-600 cursor-pointer duration-100">
+            Documentary
+          </span>
         </NavLink>
         <NavLink to="/favs">
-          <span className="hover:text-orange-600 cursor-pointer duration-100">Favs</span>
+          <span className="hover:text-orange-600 cursor-pointer duration-100">
+            Favs
+          </span>
         </NavLink>
       </div>
     </div>

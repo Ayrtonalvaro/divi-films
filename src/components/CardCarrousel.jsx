@@ -8,8 +8,8 @@ const CardCarrousel = ({movie}) => {
     <>
       <NavLink to={`/movie/${movie.id}`}>
         <img
-          className=" mt-5 object-center rounded-md  hover:scale-105 duration-300  cursor-pointer"
-          src={`${LINK_IMG}${movie.backdrop_path}`}
+          className=" mt-5 p-1  object-center rounded-xl  hover:scale-105 duration-300  cursor-pointer"
+          src={`${LINK_IMG}${movie.poster_path}`}
         />
       </NavLink>
     </>
