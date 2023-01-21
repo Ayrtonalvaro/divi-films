@@ -7,8 +7,10 @@ const Films = () => {
   const movies = useMovies(URL_POPULAR);
 
   return (
-    <div>
-      <h1 className="text-3xl text-orange-600">Popular movies</h1>
+    <div className="p-10">
+      <h1 className=" text-orange-600 flex justify-center text-6xl font-sans uppercase">
+        Popular movies
+      </h1>
       <GridContainer movies={movies} />
     </div>
   );

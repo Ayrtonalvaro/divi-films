@@ -14,7 +14,7 @@ const MovieDetail = () => {
   const similarMovies = useSimilarMovie(id);
 
   return (
-    <div className="mt-5 h-screen ">
+    <div className="mt-5 h-screen p-10 ">
       <div id="headear-movie-detail" className="grid grid-cols-2 items-start ">
         <img
           className="opacity-75 rounded-xl w-[600px] h-full"

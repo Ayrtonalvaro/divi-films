@@ -6,8 +6,8 @@ const logo =
 
 const Navbar = () => {
   return (
-    <div className="flex justify-around p-5">
-      <div>
+    <div className="flex justify-around items-center p-5 bg-opacity-75">
+      <div className="">
         <NavLink to="/">
           <img className="w-28" src={logo} />
         </NavLink>
@@ -23,12 +23,12 @@ const Navbar = () => {
             Movies
           </span>
         </NavLink>
-        <NavLink to="/series">
+        <NavLink to="/category/27">
           <span className="hover:text-orange-600 cursor-pointer duration-100">
             Horror
           </span>
         </NavLink>
-        <NavLink to="/populars">
+        <NavLink to="/category/99">
           <span className="hover:text-orange-600 cursor-pointer duration-100">
             Documentary
           </span>

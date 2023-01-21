@@ -9,7 +9,7 @@ import { API_KEY } from "../utils/Apikey";
     )
       .then((res) => res.json())
       .then((data) => setMovieByCategory(data.results));
-  }, []);
+  }, [id]);
   return movieByCategory;
 }
 

@@ -10,7 +10,7 @@ const useSimilarMovie = (id) => {
     )
       .then((res) => res.json())
       .then((data) => setMovie(data.results));
-  }, []);
+  }, [id]);
   return movie;
 };
 
