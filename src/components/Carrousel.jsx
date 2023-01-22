@@ -14,6 +14,24 @@ const Carrousel = ({ movies }) => {
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         spaceBetween={10}
         slidesPerView={6}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10
+          },
+          480: {
+            slidesPerView: 1,
+            spaceBetween:10
+          },
+          720: {
+            slidesPerView: 3,
+            spaceBetween:10
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween:10
+          }
+        }}
         navigation   
       >
         {movies.map((movie) => (

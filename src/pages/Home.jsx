@@ -6,18 +6,16 @@ import { API_KEY } from '../utils/Apikey';
 import useMovies from '../hooks/useMovies';
 import useMovieByCategory from '../hooks/useMovieByCategory';
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
-import AppContext from '../context/AppContex';
 
 const Home = () => {
   const URL_POPULAR = `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
   const movies = useMovies(URL_POPULAR);
+  
   const adventure = useMovieByCategory(12);
   const action = useMovieByCategory(28);
   const horror = useMovieByCategory(27);
   const [loading, setLoading] = useState(true);
 
-  const moviesFavs = useContext(AppContext);
   if (!movies)
     return (
       <div>

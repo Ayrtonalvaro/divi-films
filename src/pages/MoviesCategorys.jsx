@@ -1,29 +1,44 @@
 import React from 'react';
+import { useRef } from 'react';
+import { useCallback } from 'react';
+import { useMemo } from 'react';
 import { useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import GridContainer from '../components/GridContainer';
+import Search from '../components/Search';
 import useCategory from '../hooks/useCategory';
+
 import useMovieByCategory from '../hooks/useMovieByCategory';
 
 const MoviesCategorys = () => {
   const { idCategory } = useParams();
   const moviesCategory = useMovieByCategory(idCategory);
-
   const category = useCategory(idCategory);
 
   const [search, setSearch] = useState('');
+  const searchInput = useRef(null);
 
-  const handleChange = (event) => {
-    setSearch(event.target.value);
-  };
+  const handleSearch = useCallback(() => {
+    setSearch(searchInput.current.value);
+  }, []);
+
+  const filteredCharacters = useMemo(
+    () =>
+      moviesCategory.filter((movie) => {
+        return movie.original_title
+          .toLowerCase()
+          .includes(search.toLowerCase());
+      }),
+    [moviesCategory, search]
+  );
 
   return (
     <div>
-      <div className="flex justify-around mt-5 items-center">
+      <div className="mt-5 flex items-center justify-around">
         {category.map((category) => {
           return (
             <h1
-              className="flex justify-center text-6xl font-sans text-orange-700 uppercase"
+              className="flex justify-center font-sans text-6xl uppercase text-orange-700"
               key={category.id}
             >
               {category.name}
@@ -31,18 +46,20 @@ const MoviesCategorys = () => {
           );
         })}
 
-        <form className='flex gap-5 items-center'>
-          <i className="fa-solid fa-magnifying-glass  rounded-full  flex items-center justify-center"></i>
+        <div className="flex items-center gap-5">
+          
           <input
-            className="bg-slate-800 outline-none border rounded-xl px-3 py-1"
+            ref={searchInput}
+            className="rounded-xl border bg-slate-800 px-3 py-1 outline-none"
             placeholder="Search..."
             value={search}
-            onChange={handleChange}
+            type="text"
+            onChange={handleSearch}
             autoFocus
           />
-        </form>
+        </div>
       </div>
-      <GridContainer movies={moviesCategory} movieFilter={''} />
+      <GridContainer movies={filteredCharacters} />
     </div>
   );
 };

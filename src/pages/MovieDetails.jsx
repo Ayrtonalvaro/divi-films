@@ -1,10 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import YouTube from 'react-youtube';
 
 import Carrousel from '../components/Carrousel';
 
 import useMovie from '../hooks/useMovie';
 import useSimilarMovie from '../hooks/useSimilarMovie';
+import useVideos from '../hooks/useVideos';
 
 const LINK_IMG = 'https://image.tmdb.org/t/p/w500/';
 
@@ -12,17 +14,19 @@ const MovieDetail = () => {
   const { id } = useParams();
   const movie = useMovie(id);
   const similarMovies = useSimilarMovie(id);
-
+  const videosMovieKey = useVideos(id);
+  
+  
   return (
     <div className="mt-5 h-screen p-10 ">
       <div id="headear-movie-detail" className="grid grid-cols-2 items-start ">
         <img
-          className="opacity-75 rounded-xl w-[600px] h-full"
+          className="h-full w-[600px] rounded-xl opacity-75"
           src={`${LINK_IMG}${movie.poster_path}`}
         />
         <div className="">
           <h1
-            className="flex justify-start text-7xl mt-5 uppercase text-orange-500"
+            className="mt-5 flex justify-start text-7xl uppercase text-orange-500"
             id="title-movie-details"
           >
             {movie.original_title}
@@ -30,12 +34,12 @@ const MovieDetail = () => {
 
           <p className=" mt-5 text-lg text-slate-300">{movie.overview}</p>
           <div>
-            <h3 className="text-xl text-orange-500 mt-3">
-              <span className="text-slate-300 uppercase ">movie time</span>{' '}
+            <h3 className="mt-3 text-xl text-orange-500">
+              <span className="uppercase text-slate-300 ">movie time</span>{' '}
               {movie.runtime}
               min
             </h3>
-            <div className="flex items-center justify-start gap-10 mt-5">
+            <div className="mt-5 flex items-center justify-start gap-10">
               <h3 className="text-xl text-slate-400">Genres</h3>
               {movie.genres?.map((genre) => {
                 return (
@@ -49,14 +53,14 @@ const MovieDetail = () => {
               Release date {movie.release_date}
             </p>
             <a
-              className="hover:text-orange-500 text-orange-200 duration-100 "
+              className="text-orange-200 duration-100 hover:text-orange-500 "
               href={movie.homepage}
               target="_blank"
             >
               {movie.homepage}
             </a>
           </div>
-          <div className="grid grid-cols-2 mt-10">
+          <div className="mt-10 grid grid-cols-2">
             {movie.production_companies?.map((company) => {
               return (
                 <div key={company.id}>
@@ -70,6 +74,8 @@ const MovieDetail = () => {
           </div>
         </div>
       </div>
+      <button>Ver trailer</button>
+      
       <h2 className="mt-5 text-5xl text-orange-200">Similar movies</h2>
       <Carrousel movies={similarMovies} />
     </div>

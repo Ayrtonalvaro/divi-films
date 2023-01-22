@@ -1,16 +1,29 @@
 import React from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import AppContext from '../context/AppContex';
+import ButtonAdd from './ButtonAdd';
 const LINK_IMG = 'https://image.tmdb.org/t/p/w500/';
 const CardGrid = ({ movie }) => {
+
+  const { addFavs} = useContext(AppContext)
+
+  const onAdd = () => {
+    addFavs({...movie})
+  }
+
   return (
-    <div>
+    <div className="relative">
       <NavLink to={`/movie/${movie.id}`}>
         <img
-          className=" w-full p-10 rounded-md hover:opacity-75"
+          className=" w-full rounded-md p-10 hover:opacity-75"
           src={`${LINK_IMG}${movie.poster_path}`}
         />
       </NavLink>
-      <p className="text-white font-black text-xl flex justify-center ">{movie.original_title}</p>
+      <ButtonAdd onAdd ={onAdd} />
+      <p className="flex justify-center text-xl font-black text-white ">
+        {movie.original_title}
+      </p>
     </div>
   );
 };

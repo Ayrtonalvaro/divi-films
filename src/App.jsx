@@ -13,18 +13,25 @@ import AppContext from './context/AppContex';
 import { useState } from 'react';
 
 function App() {
-  const [moviesFavs, setMoviesFavs] = useState ([]);
+  const [moviesFavs, setMoviesFavs] = useState([]);
+  const [buttonState, setButtonState] = useState(true)
 
   const addFavs = (movieAdd) => {
-    setMoviesFavs(prev => {
-      return[...prev,movieAdd]
-    })
+    if (!isInFav(movieAdd.id)) {
+      setMoviesFavs((prev) => {
+        return [...prev, movieAdd];
+      });
+      setButtonState(false)
+    } else {
+      alert('Ya esta en favs');
+    }
   };
-  console.log(moviesFavs)
 
-  const isInFav = (id) => (moviesFav => id === moviesFav.id)
+  const isInFav = (id) => {
+    return moviesFavs.some((movie) => movie.id === id);
+  };
   return (
-    <AppContext.Provider value={ {addFavs} }>
+    <AppContext.Provider value={{ addFavs,moviesFavs,buttonState }}>
       <BrowserRouter>
         <Navbar />
         <div className="App ">
