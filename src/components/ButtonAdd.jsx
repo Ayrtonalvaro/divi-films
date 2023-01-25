@@ -1,13 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import AppContext from '../context/AppContex';
 
-const ButtonAdd = ({ onAdd }) => {
+const ButtonAdd = ({ onAdd, onRemove }) => {
   const { buttonState } = useContext(AppContext);
+  const [state, setState] = useState(true);
+
+  const handleState = () => {
+    if (state) {
+      onAdd();
+      setState(false);
+    } else {
+      onRemove()
+      setState(true);
+    }
+  };
 
   return (
     <div
-      onClick={onAdd}
       className="absolute 
         top-2  
         flex 
@@ -29,7 +40,8 @@ const ButtonAdd = ({ onAdd }) => {
         md:right-5 
         md:top-4 "
     >
-      <i className="fa-solid fa-plus "></i>
+      {state && <i onClick={handleState} className="fa-solid fa-plus "></i>}
+      {!state && <i onClick={handleState} className="fa-solid fa-x"></i>}
     </div>
   );
 };

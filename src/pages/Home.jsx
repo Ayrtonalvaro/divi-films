@@ -10,7 +10,6 @@ import { NavLink } from 'react-router-dom';
 const Home = () => {
   const URL_POPULAR = `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
   const movies = useMovies(URL_POPULAR);
-  
   const adventure = useMovieByCategory(12);
   const action = useMovieByCategory(28);
   const horror = useMovieByCategory(27);
@@ -19,34 +18,34 @@ const Home = () => {
   if (!movies)
     return (
       <div>
-        <p className="text-6xl flex  justify-center mt-[100px]">
+        <p className="mt-[100px] flex  justify-center text-6xl">
           Loading films...
         </p>
       </div>
     );
   return (
     <div className="mt-5 scroll-smooth p-10">
-      <h4 className="text-orange-600 text-3xl font-black ">Tendencias</h4>
+      <h4 className="text-3xl font-black text-orange-600 ">Tendencias</h4>
       <NavLink to="/movies">
-        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+        <span className="mb-3 mt-3 hover:text-orange-600">Ver todas</span>
       </NavLink>
       <Carrousel movies={movies} />
 
-      <h4 className="text-orange-600 text-2xl mt-5 ">Adventure</h4>
+      <h4 className="mt-5 text-2xl text-orange-600 ">Adventure</h4>
       <NavLink to={`/category/12`}>
-        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+        <span className="mb-3 mt-3 hover:text-orange-600">Ver todas</span>
       </NavLink>
 
       <Carrousel movies={adventure} />
-      <h4 className="text-orange-600 text-2xl mt-5 ">Action</h4>
+      <h4 className="mt-5 text-2xl text-orange-600 ">Action</h4>
       <NavLink to="/category/28">
-        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+        <span className="mb-3 mt-3 hover:text-orange-600">Ver todas</span>
       </NavLink>
 
       <Carrousel movies={action} />
-      <h4 className="text-orange-600 text-2xl mt-5 ">horror</h4>
+      <h4 className="mt-5 text-2xl text-orange-600 ">horror</h4>
       <NavLink to="category/27">
-        <span className="hover:text-orange-600 mb-3 mt-3">Ver todas</span>
+        <span className="mb-3 mt-3 hover:text-orange-600">Ver todas</span>
       </NavLink>
       <Carrousel movies={horror} />
     </div>

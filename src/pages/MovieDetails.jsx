@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import YouTube from 'react-youtube';
 
 import Carrousel from '../components/Carrousel';
 

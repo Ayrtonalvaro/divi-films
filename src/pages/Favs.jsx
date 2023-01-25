@@ -4,7 +4,7 @@ import AppContext from '../context/AppContex';
 import GridContainer from '../components/GridContainer';
 const Favs = () => {
   const { moviesFavs } = useContext(AppContext);
-  console.log(moviesFavs)
+  
 
   if(moviesFavs.length === 0){
     return (

@@ -1,12 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
-
 import Favs from './pages/Favs';
 import Films from './pages/Films';
 import Home from './pages/Home';
-
 import MoviesCategory from './pages/MoviesCategorys';
 import MovieDetail from './pages/MovieDetails';
 import AppContext from './context/AppContex';
@@ -14,24 +12,23 @@ import { useState } from 'react';
 
 function App() {
   const [moviesFavs, setMoviesFavs] = useState([]);
-  const [buttonState, setButtonState] = useState(true)
-
   const addFavs = (movieAdd) => {
     if (!isInFav(movieAdd.id)) {
       setMoviesFavs((prev) => {
         return [...prev, movieAdd];
       });
-      setButtonState(false)
-    } else {
-      alert('Ya esta en favs');
     }
+  };
+
+  const removeMovie = (id) => {
+    setMoviesFavs(moviesFavs.filter((movie) => movie.id !== id));
   };
 
   const isInFav = (id) => {
     return moviesFavs.some((movie) => movie.id === id);
   };
   return (
-    <AppContext.Provider value={{ addFavs,moviesFavs,buttonState }}>
+    <AppContext.Provider value={{ addFavs, moviesFavs, removeMovie }}>
       <BrowserRouter>
         <Navbar />
         <div className="App ">

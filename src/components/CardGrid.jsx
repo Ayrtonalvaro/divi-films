@@ -6,10 +6,14 @@ import ButtonAdd from './ButtonAdd';
 const LINK_IMG = 'https://image.tmdb.org/t/p/w500/';
 const CardGrid = ({ movie }) => {
 
-  const { addFavs} = useContext(AppContext)
+  const { addFavs, removeFavs } = useContext(AppContext);
 
   const onAdd = () => {
     addFavs({...movie})
+  }
+
+  const onRemove = () => {
+    removeFavs(movie.id)
   }
 
   return (
@@ -20,7 +24,7 @@ const CardGrid = ({ movie }) => {
           src={`${LINK_IMG}${movie.poster_path}`}
         />
       </NavLink>
-      <ButtonAdd onAdd ={onAdd} />
+      <ButtonAdd onAdd={onAdd} removeFavs={onRemove} />
       <p className="flex justify-center text-xl font-black text-white ">
         {movie.original_title}
       </p>
