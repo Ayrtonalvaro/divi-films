@@ -5,7 +5,6 @@
 **Tecnologias utilizadas**
 
 - React;
-- TypeScript;
 - Tailwindcss;
 
 **API Utilizada**
